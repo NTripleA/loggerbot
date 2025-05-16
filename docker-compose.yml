@@ -4,10 +4,10 @@ services:
   test:
     build:
       context: .
-      dockerfile: Dockerfile.test
+      dockerfile: Dockerfile
     environment:
-      - TEST_DISCORD_TOKEN=${TEST_DISCORD_TOKEN}
-      - TEST_LOG_CHANNEL_ID=${TEST_LOG_CHANNEL_ID}
+      DISCORD_TOKEN: ${DISCORD_TOKEN}
+      LOG_CHANNEL_ID: ${TEST_LOG_CHANNEL_ID}
     volumes:
       - .:/app
     command: pytest tests/ -v 
