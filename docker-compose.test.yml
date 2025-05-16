@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    environment:
+      - TEST_DISCORD_TOKEN=${TEST_DISCORD_TOKEN}
+      - TEST_LOG_CHANNEL_ID=${TEST_LOG_CHANNEL_ID}
+    volumes:
+      - .:/app
+    command: pytest tests/ -v 
