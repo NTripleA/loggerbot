@@ -3,6 +3,7 @@ import json
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
+import uptime_server  # Import the uptime server module
 
 # Load environment variables
 load_dotenv()
@@ -140,6 +141,9 @@ def main():
     if not token:
         print("Error: DISCORD_TOKEN not found in .env file")
         return
+    
+    # Start HTTP server in a separate thread
+    uptime_server.run_server()
 
     try:
         bot.run(token)
