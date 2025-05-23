@@ -1,13 +1,20 @@
-version: '3.8'
-
 services:
   test:
     build:
       context: .
-      dockerfile: Dockerfile
-    environment:
-      DISCORD_TOKEN: ${DISCORD_TOKEN}
-      LOG_CHANNEL_ID: ${TEST_LOG_CHANNEL_ID}
+    env_file:
+      - .env
     volumes:
       - .:/app
     command: pytest tests/ -v 
+  
+  build:
+    build:
+      context: .
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    ports:
+      - 8080:8080
+    command: python -m bot
