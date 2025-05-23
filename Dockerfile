@@ -20,4 +20,4 @@ COPY . .
 ENV PYTHONPATH=/app
 
 # Run the tests
-CMD ["pytest", "tests/", "-v"] 
+CMD ["python", "-m", "bot"] 
